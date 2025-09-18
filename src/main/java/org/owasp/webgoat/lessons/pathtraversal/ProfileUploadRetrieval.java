@@ -63,7 +63,7 @@ public class ProfileUploadRetrieval implements AssignmentEndpoint {
               .getInputStream()) {
         FileCopyUtils.copy(is, new FileOutputStream(new File(catPicturesDirectory, i + ".jpg")));
       } catch (Exception e) {
-        log.error("Unable to copy pictures" + e.getMessage());
+          log.error("Unable to copy pictures{}", e.getMessage());
       }
     }
     var secretDirectory = this.catPicturesDirectory.getParentFile().getParentFile();

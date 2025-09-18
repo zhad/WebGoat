@@ -4,22 +4,29 @@
  */
 package org.owasp.webgoat.container.session;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.io.Serializable;
 
+@Setter
+@Getter
 public class LabelDebugger implements Serializable {
 
-  private boolean enabled = false;
+    /**
+     * -- GETTER --
+     *  isEnabled.
+     *
+     *
+     * -- SETTER --
+     *  Sets the status to enabled
+     *
+     @return a boolean.
+      * @param enabled {@link LabelDebugger} object
+     */
+    private boolean enabled = false;
 
-  /**
-   * isEnabled.
-   *
-   * @return a boolean.
-   */
-  public boolean isEnabled() {
-    return enabled;
-  }
-
-  /** Enables label debugging */
+    /** Enables label debugging */
   public void enable() {
     this.enabled = true;
   }
@@ -29,12 +36,4 @@ public class LabelDebugger implements Serializable {
     this.enabled = false;
   }
 
-  /**
-   * Sets the status to enabled
-   *
-   * @param enabled {@link org.owasp.webgoat.container.session.LabelDebugger} object
-   */
-  public void setEnabled(boolean enabled) {
-    this.enabled = enabled;
-  }
 }

@@ -46,7 +46,7 @@ public class SqlInjectionLesson10b implements AssignmentEndpoint {
     try {
       if (editor.isEmpty()) return failed(this).feedback("sql-injection.10b.no-code").build();
 
-      editor = editor.replaceAll("\\<.*?>", "");
+      editor = editor.replaceAll("<.*?>", "");
 
       String regexSetsUpConnection = "(?=.*getConnection.*)";
       String regexUsesPreparedStatement = "(?=.*PreparedStatement.*)";
@@ -72,14 +72,14 @@ public class SqlInjectionLesson10b implements AssignmentEndpoint {
               && (usesExecute || usesExecuteUpdate));
       List<Diagnostic> hasCompiled = this.compileFromString(editor);
 
-      if (hasImportant && hasCompiled.size() < 1) {
+      if (hasImportant && hasCompiled.isEmpty()) {
         return success(this).feedback("sql-injection.10b.success").build();
-      } else if (hasCompiled.size() > 0) {
-        String errors = "";
+      } else if (!hasCompiled.isEmpty()) {
+        StringBuilder errors = new StringBuilder();
         for (Diagnostic d : hasCompiled) {
-          errors += d.getMessage(null) + "<br>";
+          errors.append(d.getMessage(null)).append("<br>");
         }
-        return failed(this).feedback("sql-injection.10b.compiler-errors").output(errors).build();
+        return failed(this).feedback("sql-injection.10b.compiler-errors").output(errors.toString()).build();
       } else {
         return failed(this).feedback("sql-injection.10b.failed").build();
       }
@@ -118,8 +118,8 @@ public class SqlInjectionLesson10b implements AssignmentEndpoint {
     return javaFileObject;
   }
 
-  class JavaObjectFromString extends SimpleJavaFileObject {
-    private String contents = null;
+  static class JavaObjectFromString extends SimpleJavaFileObject {
+    private String contents;
 
     public JavaObjectFromString(String className, String contents) throws Exception {
       super(new URI(className), Kind.SOURCE);

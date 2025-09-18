@@ -42,7 +42,7 @@ public class JWTToken {
   private boolean signatureValid = true;
 
   public static JWTToken decode(String jwt, String secretKey) {
-    var token = parseToken(jwt.trim().replace(System.getProperty("line.separator"), ""));
+    var token = parseToken(jwt.trim().replace(System.lineSeparator(), ""));
     return token.toBuilder().signatureValid(validateSignature(secretKey, jwt)).build();
   }
 

@@ -33,7 +33,7 @@ public class Requests {
 
   @AllArgsConstructor
   @Getter
-  private class Tracert {
+  private static class Tracert {
     private final Instant date;
     private final String path;
     private final String json;

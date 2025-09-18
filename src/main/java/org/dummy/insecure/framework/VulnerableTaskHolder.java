@@ -4,11 +4,7 @@
  */
 package org.dummy.insecure.framework;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
+import java.io.*;
 import java.time.LocalDateTime;
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 // TODO move back to lesson
 public class VulnerableTaskHolder implements Serializable {
 
+  @Serial
   private static final long serialVersionUID = 2;
 
   private final String taskName;
@@ -43,6 +40,7 @@ public class VulnerableTaskHolder implements Serializable {
   /**
    * Execute a task when de-serializing a saved or received object.
    */
+  @Serial
   private void readObject(ObjectInputStream stream) throws Exception {
     // unserialize data so taskName and taskAction are available
     stream.defaultReadObject();
@@ -66,7 +64,7 @@ public class VulnerableTaskHolder implements Serializable {
       try {
         Process p = Runtime.getRuntime().exec(taskAction);
         BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
-        String line = null;
+        String line;
         while ((line = in.readLine()) != null) {
           log.info(line);
         }

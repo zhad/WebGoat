@@ -48,7 +48,7 @@ public class SqlInjectionLesson5b implements AssignmentEndpoint {
           connection.prepareStatement(
               queryString, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 
-      int count = 0;
+      int count;
       try {
         count = Integer.parseInt(login_count);
       } catch (Exception e) {

@@ -47,9 +47,6 @@ public class SqlInjectionLesson10a implements AssignmentEndpoint {
       }
       position++;
     }
-    if (completed) {
       return success(this).build();
-    }
-    return failed(this).build();
   }
 }

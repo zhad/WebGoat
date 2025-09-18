@@ -30,10 +30,9 @@ public class AccountVerificationHelper {
   // this is to aid feedback in the attack process and is not intended to be part of the
   // 'vulnerable' code
   public boolean didUserLikelylCheat(HashMap<String, String> submittedAnswers) {
-    boolean likely = false;
+    boolean likely;
 
     if (submittedAnswers.size() == secQuestionStore.get(verifyUserId).size()) {
-      likely = true;
     }
 
     if ((submittedAnswers.containsKey("secQuestion0")

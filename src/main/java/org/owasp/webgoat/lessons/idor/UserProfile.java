@@ -4,12 +4,18 @@
  */
 package org.owasp.webgoat.lessons.idor;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashMap;
 import java.util.Map;
 
 /** Created by jason on 1/5/17. */
+@Setter
+@Getter
 public class UserProfile {
-  private String userId;
+    //
+    private String userId;
   private String name;
   private String color;
   private String size;
@@ -72,52 +78,4 @@ public class UserProfile {
         + this.isAdmin;
   }
 
-  //
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
-
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-  public String getColor() {
-    return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
-
-  public String getSize() {
-    return size;
-  }
-
-  public void setSize(String size) {
-    this.size = size;
-  }
-
-  public boolean isAdmin() {
-    return isAdmin;
-  }
-
-  public void setAdmin(boolean admin) {
-    isAdmin = admin;
-  }
-
-  public int getRole() {
-    return role;
-  }
-
-  public void setRole(int role) {
-    this.role = role;
-  }
 }

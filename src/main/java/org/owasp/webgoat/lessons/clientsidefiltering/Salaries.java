@@ -55,7 +55,7 @@ public class Salaries {
   @GetMapping("clientSideFiltering/salaries")
   @ResponseBody
   public List<Map<String, Object>> invoke() {
-    NodeList nodes = null;
+    NodeList nodes;
     File d = new File(webGoatHomeDirectory, "ClientSideFiltering/employees.xml");
     XPathFactory factory = XPathFactory.newInstance();
     XPath path = factory.newXPath();

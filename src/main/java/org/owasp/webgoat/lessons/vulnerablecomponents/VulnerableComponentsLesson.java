@@ -27,7 +27,7 @@ public class VulnerableComponentsLesson implements AssignmentEndpoint {
     xstream.setClassLoader(Contact.class.getClassLoader());
     xstream.alias("contact", ContactImpl.class);
     xstream.ignoreUnknownElements();
-    Contact contact = null;
+    Contact contact;
 
     try {
       if (!StringUtils.isEmpty(payload)) {

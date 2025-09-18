@@ -36,12 +36,10 @@ public class SampleAttack implements AssignmentEndpoint {
   @ResponseBody
   public AttackResult completed(
       @RequestParam("param1") String param1, @RequestParam("param2") String param2) {
-    if (userSessionData.getValue("some-value") != null) {
-      // do any session updating you want here ... or not, just comment/example here
-      // return failed().feedback("lesson-template.sample-attack.failure-2").build());
-    }
+      userSessionData.getValue("some-value");// do any session updating you want here ... or not, just comment/example here
+// return failed().feedback("lesson-template.sample-attack.failure-2").build());
 
-    // overly simple example for success. See other existing lesssons for ways to detect 'success'
+      // overly simple example for success. See other existing lesssons for ways to detect 'success'
     // or 'failure'
     if (secretValue.equals(param1)) {
       return success(this)
@@ -65,11 +63,11 @@ public class SampleAttack implements AssignmentEndpoint {
   @ResponseBody
   public List<Item> getItemsInBasket(@PathVariable("user") String user) {
     return List.of(
-        new Item("WG-1", "WebGoat promo", 12.0), new Item("WG-2", "WebGoat sticker", 0.00));
+            new Item("WG-1", "WebGoat promo", 12.0), new Item("WG-2", "WebGoat sticker", 0.00));
   }
 
   @AllArgsConstructor
-  private class Item {
+  private static class Item {
     private String number;
     private String description;
     private double price;

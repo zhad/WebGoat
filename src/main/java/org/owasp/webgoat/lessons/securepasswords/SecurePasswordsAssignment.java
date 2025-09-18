@@ -32,15 +32,9 @@ public class SecurePasswordsAssignment implements AssignmentEndpoint {
     Strength strength = zxcvbn.measure(password);
 
     output.append("<b>Your Password: *******</b></br>");
-    output.append("<b>Length: </b>" + password.length() + "</br>");
-    output.append(
-        "<b>Estimated guesses needed to crack your password: </b>"
-            + df.format(strength.getGuesses())
-            + "</br>");
-    output.append(
-        "<div style=\"float: left;padding-right: 10px;\"><b>Score: </b>"
-            + strength.getScore()
-            + "/4 </div>");
+    output.append("<b>Length: </b>").append(password.length()).append("</br>");
+    output.append("<b>Estimated guesses needed to crack your password: </b>").append(df.format(strength.getGuesses())).append("</br>");
+    output.append("<div style=\"float: left;padding-right: 10px;\"><b>Score: </b>").append(strength.getScore()).append("/4 </div>");
     if (strength.getScore() <= 1) {
       output.append(
           "<div style=\"background-color:red;width: 200px;border-radius: 12px;float:"
@@ -54,22 +48,19 @@ public class SecurePasswordsAssignment implements AssignmentEndpoint {
           "<div style=\"background-color:green;width: 200px;border-radius: 12px;float:"
               + " left;\">&nbsp;</div></br>");
     }
-    output.append(
-        "<b>Estimated cracking time: </b>"
-            + calculateTime(
-                (long) strength.getCrackTimeSeconds().getOnlineNoThrottling10perSecond())
-            + "</br>");
-    if (strength.getFeedback().getWarning().length() != 0)
-      output.append("<b>Warning: </b>" + strength.getFeedback().getWarning() + "</br>");
+    output.append("<b>Estimated cracking time: </b>").append(calculateTime(
+            (long) strength.getCrackTimeSeconds().getOnlineNoThrottling10perSecond())).append("</br>");
+    if (!strength.getFeedback().getWarning().isEmpty())
+      output.append("<b>Warning: </b>").append(strength.getFeedback().getWarning()).append("</br>");
     // possible feedback: https://github.com/dropbox/zxcvbn/blob/master/src/feedback.coffee
     // maybe ask user to try also weak passwords to see and understand feedback?
-    if (strength.getFeedback().getSuggestions().size() != 0) {
+    if (!strength.getFeedback().getSuggestions().isEmpty()) {
       output.append("<b>Suggestions:</b></br><ul>");
       for (String sug : strength.getFeedback().getSuggestions())
-        output.append("<li>" + sug + "</li>");
+        output.append("<li>").append(sug).append("</li>");
       output.append("</ul></br>");
     }
-    output.append("<b>Score: </b>" + strength.getScore() + "/4 </br>");
+    output.append("<b>Score: </b>").append(strength.getScore()).append("/4 </br>");
 
     if (strength.getScore() >= 4)
       return success(this).feedback("securepassword-success").output(output.toString()).build();

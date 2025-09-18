@@ -26,7 +26,7 @@ public class Servers {
 
   @AllArgsConstructor
   @Getter
-  private class Server {
+  private static class Server {
 
     private String id;
     private String hostname;
@@ -54,13 +54,13 @@ public class Servers {
         try (var rs = statement.executeQuery()) {
           while (rs.next()) {
             Server server =
-                new Server(
-                    rs.getString(1),
-                    rs.getString(2),
-                    rs.getString(3),
-                    rs.getString(4),
-                    rs.getString(5),
-                    rs.getString(6));
+                    new Server(
+                            rs.getString(1),
+                            rs.getString(2),
+                            rs.getString(3),
+                            rs.getString(4),
+                            rs.getString(5),
+                            rs.getString(6));
             servers.add(server);
           }
         }

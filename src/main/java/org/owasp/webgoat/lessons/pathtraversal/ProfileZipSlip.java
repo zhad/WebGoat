@@ -16,6 +16,7 @@ import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
 import java.util.Arrays;
 import java.util.Enumeration;
+import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipFile;
 import lombok.SneakyThrows;
@@ -55,7 +56,7 @@ public class ProfileZipSlip extends ProfileUploadBase {
   @ResponseBody
   public AttackResult uploadFileHandler(
       @RequestParam("uploadedFileZipSlip") MultipartFile file, @CurrentUsername String username) {
-    if (!file.getOriginalFilename().toLowerCase().endsWith(".zip")) {
+    if (!Objects.requireNonNull(file.getOriginalFilename()).toLowerCase().endsWith(".zip")) {
       return failed(this).feedback("path-traversal-zip-slip.no-zip").build();
     } else {
       return processZipUpload(file, username);
@@ -69,7 +70,7 @@ public class ProfileZipSlip extends ProfileUploadBase {
     var currentImage = getProfilePictureAsBase64(username);
 
     try {
-      var uploadedZipFile = tmpZipDirectory.resolve(file.getOriginalFilename());
+      var uploadedZipFile = tmpZipDirectory.resolve(Objects.requireNonNull(file.getOriginalFilename()));
       FileCopyUtils.copy(file.getBytes(), uploadedZipFile.toFile());
 
       ZipFile zip = new ZipFile(uploadedZipFile.toFile());

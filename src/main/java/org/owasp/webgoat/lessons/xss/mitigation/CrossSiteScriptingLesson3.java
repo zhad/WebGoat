@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Objects;
+
 @RestController
 @AssignmentHints(
     value = {
@@ -38,9 +40,9 @@ public class CrossSiteScriptingLesson3 implements AssignmentEndpoint {
 
       String include = (lines[0]);
       String fistNameElement =
-          doc.select("body > table > tbody > tr:nth-child(1) > td:nth-child(2)").first().text();
+          Objects.requireNonNull(doc.select("body > table > tbody > tr:nth-child(1) > td:nth-child(2)").first()).text();
       String lastNameElement =
-          doc.select("body > table > tbody > tr:nth-child(2) > td:nth-child(2)").first().text();
+          Objects.requireNonNull(doc.select("body > table > tbody > tr:nth-child(2) > td:nth-child(2)").first()).text();
 
       boolean includeCorrect = false;
       boolean firstNameCorrect = false;

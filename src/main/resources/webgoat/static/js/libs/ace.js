@@ -1000,8 +1000,8 @@ exports.isMac = (os == "mac");
 exports.isLinux = (os == "linux");
 exports.isIE =
     (navigator.appName == "Microsoft Internet Explorer" || navigator.appName.indexOf("MSAppHost") >= 0)
-    ? parseFloat((ua.match(/(?:MSIE |Trident\/[0-9]+[\.0-9]+;.*rv:)([0-9]+[\.0-9]+)/)||[])[1])
-    : parseFloat((ua.match(/(?:Trident\/[0-9]+[\.0-9]+;.*rv:)([0-9]+[\.0-9]+)/)||[])[1]); // for ie
+    ? parseFloat((ua.match(/(?:MSIE |Trident\/[0-9]+[.0-9]+;.*rv:)([0-9]+[.0-9]+)/)||[])[1])
+    : parseFloat((ua.match(/Trident\/[0-9]+[.0-9]+;.*rv:([0-9]+[.0-9]+)/)||[])[1]); // for ie
 
 exports.isOldIE = exports.isIE && exports.isIE < 9;
 exports.isGecko = exports.isMozilla = ua.match(/ Gecko\/\d+/);
@@ -4591,7 +4591,7 @@ init(true);function init(packaged) {
             }
         }
 
-        var m = src.match(/^(.*)\/ace(\-\w+)?\.js(\?|$)/);
+        var m = src.match(/^(.*)\/ace(-\w+)?\.js(\?|$)/);
         if (m)
             scriptUrl = m[1];
     }
@@ -5310,7 +5310,7 @@ exports.doBidiReorder = function(text, textCharTypes, isRtl) {
 		} else if (levels[i] === R && ((textCharTypes[i] > AL && textCharTypes[i] < LRE)
 			|| textCharTypes[i] === ON || textCharTypes[i] === BN)) {
 			levels[i] = exports.ON_R;
-		} else if ((i > 0 && chars[i - 1] === '\u0644') && /\u0622|\u0623|\u0625|\u0627/.test(chars[i])) {
+		} else if ((i > 0 && chars[i - 1] === '\u0644') && /[\u0622\u0623\u0625\u0627]/.test(chars[i])) {
 			levels[i - 1] = levels[i] = exports.R_H;
 			i++;
 		}
@@ -6976,7 +6976,7 @@ var CstyleBehaviour = function(options) {
             if (selected !== "" && selected !== "{" && editor.getWrapBehavioursEnabled()) {
                 return getWrapped(selection, selected, '{', '}');
             } else if (CstyleBehaviour.isSaneInsertion(editor, session)) {
-                if (/[\]\}\)]/.test(line[cursor.column]) || editor.inMultiSelectMode || options && options.braces) {
+                if (/[\]})]/.test(line[cursor.column]) || editor.inMultiSelectMode || options && options.braces) {
                     CstyleBehaviour.recordAutoInsert(editor, session, "}");
                     return {
                         text: '{}',
@@ -9733,7 +9733,7 @@ function BracketMatch() {
         var charBeforeCursor = chr || this.getLine(position.row).charAt(position.column-1);
         if (charBeforeCursor == "") return null;
 
-        var match = charBeforeCursor.match(/([\(\[\{])|([\)\]\}])/);
+        var match = charBeforeCursor.match(/([(\[{])|([)\]}])/);
         if (!match)
             return null;
 
@@ -9748,11 +9748,11 @@ function BracketMatch() {
         var before = true, range;
 
         var chr = line.charAt(pos.column-1);
-        var match = chr && chr.match(/([\(\[\{])|([\)\]\}])/);
+        var match = chr && chr.match(/([(\[{])|([)\]}])/);
         if (!match) {
             chr = line.charAt(pos.column);
             pos = {row: pos.row, column: pos.column + 1};
-            match = chr && chr.match(/([\(\[\{])|([\)\]\}])/);
+            match = chr && chr.match(/([(\[{])|([)\]}])/);
             before = false;
         }
         if (!match)
@@ -9807,7 +9807,7 @@ function BracketMatch() {
             typeRe = new RegExp(
                 "(\\.?" +
                 token.type.replace(".", "\\.").replace("rparen", ".paren")
-                    .replace(/\b(?:end)\b/, "(?:start|begin|end)")
+                    .replace(/\bend\b/, "(?:start|begin|end)")
                 + ")+"
             );
         }
@@ -12097,7 +12097,7 @@ MultiHashHandler.prototype = HashHandler.prototype;
         this.bindKey(command.bindKey, command);
     };
     this.parseKeys = function(keys) {
-        var parts = keys.toLowerCase().split(/[\-\+]([\-\+])?/).filter(function(x){return x;});
+        var parts = keys.toLowerCase().split(/[\-+]([\-+])?/).filter(function(x){return x;});
         var key = parts.pop();
 
         var keyCode = keyUtil[key];

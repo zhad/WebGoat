@@ -31,7 +31,7 @@ public class ShopEndpoint {
 
   @AllArgsConstructor
   @Getter
-  private class CheckoutCode {
+  private static class CheckoutCode {
     private String code;
     private int discount;
   }

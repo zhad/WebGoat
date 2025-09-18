@@ -5,15 +5,26 @@
 package org.owasp.webgoat.container.session;
 
 import java.util.List;
+
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.owasp.webgoat.container.lessons.Category;
 import org.owasp.webgoat.container.lessons.Lesson;
 import org.owasp.webgoat.container.lessons.LessonName;
 
+@Setter
+@Getter
 @Slf4j
 public class Course {
 
-  private List<Lesson> lessons;
+    /**
+     * -- GETTER --
+     *  Getter for the field <code>lessons</code>.
+     *
+     * @return a {@link List} object.
+     */
+    private List<Lesson> lessons;
 
   public Course(List<Lesson> lessons) {
     this.lessons = lessons;
@@ -39,16 +50,7 @@ public class Course {
     return getLessons(getCategories().get(0)).get(0);
   }
 
-  /**
-   * Getter for the field <code>lessons</code>.
-   *
-   * @return a {@link java.util.List} object.
-   */
-  public List<Lesson> getLessons() {
-    return this.lessons;
-  }
-
-  /**
+    /**
    * Getter for the field <code>lessons</code>.
    *
    * @param category a {@link org.owasp.webgoat.container.lessons.Category} object.
@@ -58,11 +60,7 @@ public class Course {
     return this.lessons.stream().filter(l -> l.getCategory() == category).toList();
   }
 
-  public void setLessons(List<Lesson> lessons) {
-    this.lessons = lessons;
-  }
-
-  public int getTotalOfLessons() {
+    public int getTotalOfLessons() {
     return this.lessons.size();
   }
 

@@ -34,11 +34,9 @@ public class Assignment1 implements AssignmentEndpoint {
             && PASSWORD
                 .replace("1234", String.format("%04d", ImageServlet.PINCODE))
                 .equals(password);
-    if (passwordCorrect && ipAddressKnown) {
+    if (passwordCorrect) {
       return success(this).feedback("challenge.solved").feedbackArgs(flags.getFlag(1)).build();
-    } else if (passwordCorrect) {
-      return failed(this).feedback("ip.address.unknown").build();
     }
-    return failed(this).build();
+      return failed(this).build();
   }
 }

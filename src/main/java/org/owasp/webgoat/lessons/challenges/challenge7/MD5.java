@@ -163,7 +163,7 @@ public class MD5 {
    * @since ostermillerutils 1.00.00
    */
   public static byte[] getHash(File f) throws IOException {
-    byte[] hash = null;
+    byte[] hash;
     try (InputStream is = new FileInputStream(f)) {
       hash = getHash(is);
     }
@@ -179,7 +179,7 @@ public class MD5 {
    * @since ostermillerutils 1.00.00
    */
   public static String getHashString(File f) throws IOException {
-    String hash = null;
+    String hash;
     try (InputStream is = new FileInputStream(f)) {
       hash = getHashString(is);
     }
@@ -487,7 +487,7 @@ public class MD5 {
    *
    * @since ostermillerutils 1.00.00
    */
-  private class MD5State {
+  private static class MD5State {
 
     /**
      * True if this state is valid.

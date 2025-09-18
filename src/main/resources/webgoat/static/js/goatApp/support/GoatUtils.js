@@ -10,7 +10,7 @@ define(['jquery',
             var goatUtils = {
                 makeId: function(lessonName) {
                     //var id =
-                    return  lessonName.replace(/\s|\(|\)|\!|\:|\;|\@|\#|\$|\%|\^|\&|\*/g, '');
+                    return  lessonName.replace(/\s|\(|\)|!|:|;|@|#|\$|%|\^|&|\*/g, '');
                 },
 
                 addMenuClasses: function(arr) {
