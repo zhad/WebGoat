@@ -13589,7 +13589,7 @@ Editor.$uid = 0;
         var line = session.getLine(selection.start.row);
 
         var needle = line.substring(startColumn, endColumn);
-        if (needle.length > 5000 || !/[\w\d]/.test(needle))
+        if (needle.length > 5000 || !/[\w]/.test(needle))
             return;
 
         var re = this.$search.$assembleRegExp({

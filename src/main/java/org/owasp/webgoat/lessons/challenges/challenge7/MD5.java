@@ -294,7 +294,7 @@ public class MD5 {
     int index = (int) (state.bitCount >>> 3) & 0x3f;
 
     // add the length to the count (translate bytes to bits)
-    state.bitCount += length << 3;
+    state.bitCount += (long) length << 3;
 
     int partlen = 64 - index;
 
