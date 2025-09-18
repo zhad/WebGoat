@@ -68,7 +68,7 @@ public class SqlInjectionLesson5b implements AssignmentEndpoint {
       try {
         ResultSet results = query.executeQuery();
 
-        if ((results != null) && (results.first() == true)) {
+        if ((results != null) && (results.first())) {
           ResultSetMetaData resultsMetaData = results.getMetaData();
           StringBuilder output = new StringBuilder();
 
@@ -85,7 +85,7 @@ public class SqlInjectionLesson5b implements AssignmentEndpoint {
           } else {
             return failed(this)
                 .output(
-                    output.toString()
+                    output
                         + "<br> Your query was: "
                         + queryString.replace("?", login_count))
                 .build();

@@ -393,7 +393,7 @@ public class MD5 {
    *
    * @since ostermillerutils 1.00.00
    */
-  private MD5State workingState = new MD5State();
+  private final MD5State workingState = new MD5State();
 
   /**
    * Cached copy of the final MD5 hash sum. This is created when the hash is requested and it is
@@ -401,14 +401,14 @@ public class MD5 {
    *
    * @since ostermillerutils 1.00.00
    */
-  private MD5State finalState = new MD5State();
+  private final MD5State finalState = new MD5State();
 
   /**
    * Temporary buffer cached here for performance reasons.
    *
    * @since ostermillerutils 1.00.00
    */
-  private int[] decodeBuffer = new int[16];
+  private final int[] decodeBuffer = new int[16];
 
   /**
    * 64 bytes of padding that can be added if the length is not divisible by 64.
@@ -515,7 +515,7 @@ public class MD5 {
      *
      * @since ostermillerutils 1.00.00
      */
-    private int state[] = new int[4];
+    private final int[] state = new int[4];
 
     /**
      * 64-bit count of the number of bits that have been hashed.
@@ -529,7 +529,7 @@ public class MD5 {
      *
      * @since ostermillerutils 1.00.00
      */
-    private byte buffer[] = new byte[64];
+    private final byte[] buffer = new byte[64];
 
     private MD5State() {
       reset();

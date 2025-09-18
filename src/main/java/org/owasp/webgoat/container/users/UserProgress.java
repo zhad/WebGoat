@@ -32,7 +32,7 @@ public class UserProgress {
   private String user;
 
   @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  private Set<LessonProgress> lessonProgress = new HashSet<>();
+  private final Set<LessonProgress> lessonProgress = new HashSet<>();
 
   protected UserProgress() {}
 

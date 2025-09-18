@@ -31,7 +31,7 @@ import org.springframework.web.bind.annotation.RestController;
 @AssignmentHints({"csrf-review-hint1", "csrf-review-hint2", "csrf-review-hint3"})
 public class ForgedReviews implements AssignmentEndpoint {
 
-  private static DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH:mm:ss");
+  private static final DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy-MM-dd, HH:mm:ss");
 
   private static final Map<String, List<Review>> userReviews = new HashMap<>();
   private static final List<Review> REVIEWS = new ArrayList<>();

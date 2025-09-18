@@ -66,15 +66,11 @@ public class Salaries {
     try (InputStream is = new FileInputStream(d)) {
       InputSource inputSource = new InputSource(is);
 
-      StringBuilder sb = new StringBuilder();
-
-      sb.append("/Employees/Employee/UserID | ");
-      sb.append("/Employees/Employee/FirstName | ");
-      sb.append("/Employees/Employee/LastName | ");
-      sb.append("/Employees/Employee/SSN | ");
-      sb.append("/Employees/Employee/Salary ");
-
-      String expression = sb.toString();
+        String expression = "/Employees/Employee/UserID | " +
+                "/Employees/Employee/FirstName | " +
+                "/Employees/Employee/LastName | " +
+                "/Employees/Employee/SSN | " +
+                "/Employees/Employee/Salary ";
       nodes = (NodeList) path.evaluate(expression, inputSource, XPathConstants.NODESET);
       for (int i = 0; i < nodes.getLength(); i++) {
         if (i % columns == 0) {

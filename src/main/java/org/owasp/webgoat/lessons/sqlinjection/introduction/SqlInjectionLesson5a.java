@@ -66,7 +66,7 @@ public class SqlInjectionLesson5a implements AssignmentEndpoint {
                 .feedbackArgs(output.toString())
                 .build();
           } else {
-            return failed(this).output(output.toString() + "<br> Your query was: " + query).build();
+            return failed(this).output(output + "<br> Your query was: " + query).build();
           }
         } else {
           return failed(this)

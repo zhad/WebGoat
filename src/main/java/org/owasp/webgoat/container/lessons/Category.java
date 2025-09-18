@@ -25,7 +25,7 @@ public enum Category {
 
   CHALLENGE("Challenges");
 
-  @Getter private String name;
+  @Getter private final String name;
 
   Category(String name) {
     this.name = name;

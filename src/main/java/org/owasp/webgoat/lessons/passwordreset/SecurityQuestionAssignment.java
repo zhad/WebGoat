@@ -22,7 +22,7 @@ public class SecurityQuestionAssignment implements AssignmentEndpoint {
 
   private final TriedQuestions triedQuestions;
 
-  private static Map<String, String> questions;
+  private static final Map<String, String> questions;
 
   static {
     questions = new HashMap<>();

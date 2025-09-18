@@ -13,7 +13,7 @@ import org.springframework.web.context.annotation.SessionScope;
 @SessionScope
 public class TriedQuestions {
 
-  private Set<String> answeredQuestions = new HashSet<>();
+  private final Set<String> answeredQuestions = new HashSet<>();
 
   public void incr(String question) {
     answeredQuestions.add(question);

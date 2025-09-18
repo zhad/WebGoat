@@ -36,7 +36,7 @@ public class ShopEndpoint {
     private int discount;
   }
 
-  private CheckoutCodes checkoutCodes;
+  private final CheckoutCodes checkoutCodes;
 
   public ShopEndpoint() {
     List<CheckoutCode> codes = Lists.newArrayList();

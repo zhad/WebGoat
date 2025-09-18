@@ -81,10 +81,9 @@ public class LessonMenuItem {
 
   @Override
   public String toString() {
-    StringBuilder bldr = new StringBuilder();
-    bldr.append("Name: ").append(name).append(" | ");
-    bldr.append("Type: ").append(type).append(" | ");
-    return bldr.toString();
+      String bldr = "Name: " + name + " | " +
+              "Type: " + type + " | ";
+    return bldr;
   }
 
   /**

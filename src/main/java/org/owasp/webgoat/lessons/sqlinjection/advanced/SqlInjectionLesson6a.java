@@ -102,7 +102,7 @@ public class SqlInjectionLesson6a implements AssignmentEndpoint {
   private AttackResult verifySqlInjection(
       StringBuilder output, String appendingWhenSucceded, String query) {
     if (!(output.toString().contains("dave") && output.toString().contains("passW0rD"))) {
-      return failed(this).output(output.toString() + YOUR_QUERY_WAS + query).build();
+      return failed(this).output(output + YOUR_QUERY_WAS + query).build();
     }
 
     output.append(appendingWhenSucceded);

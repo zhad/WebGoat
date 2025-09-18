@@ -33,9 +33,8 @@ public class HttpBasicsInterceptRequest implements AssignmentEndpoint {
       return failed(this).feedback("http-proxies.intercept.failure").build();
     }
     if (headerValue != null
-        && paramValue != null
-        && headerValue
-        && "Requests are tampered easily".equalsIgnoreCase(paramValue)) {
+            && headerValue
+            && "Requests are tampered easily".equalsIgnoreCase(paramValue)) {
       return success(this).feedback("http-proxies.intercept.success").build();
     } else {
       return failed(this).feedback("http-proxies.intercept.failure").build();

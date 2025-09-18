@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 public class UserInterceptor implements HandlerInterceptor {
 
-  private Environment env = EnvironmentExposure.getEnv();
+  private final Environment env = EnvironmentExposure.getEnv();
 
   @Override
   public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)

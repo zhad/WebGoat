@@ -21,7 +21,7 @@ import org.springframework.web.context.annotation.ApplicationScope;
 @Component
 public class HijackSessionAuthenticationProvider implements AuthenticationProvider<Authentication> {
 
-  private Queue<String> sessions = new LinkedList<>();
+  private final Queue<String> sessions = new LinkedList<>();
   private static long id = new Random().nextLong() & Long.MAX_VALUE;
   protected static final int MAX_SESSIONS = 50;
 

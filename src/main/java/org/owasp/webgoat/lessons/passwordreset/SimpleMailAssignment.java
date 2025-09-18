@@ -26,7 +26,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class SimpleMailAssignment implements AssignmentEndpoint {
   private final String webWolfURL;
-  private RestTemplate restTemplate;
+  private final RestTemplate restTemplate;
 
   public SimpleMailAssignment(
       RestTemplate restTemplate, @Value("${webwolf.mail.url}") String webWolfURL) {

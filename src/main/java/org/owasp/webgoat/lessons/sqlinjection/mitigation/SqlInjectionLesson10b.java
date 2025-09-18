@@ -10,6 +10,7 @@ import static org.owasp.webgoat.container.assignments.AttackResultBuilder.succes
 import java.io.IOException;
 import java.net.URI;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -93,7 +94,7 @@ public class SqlInjectionLesson10b implements AssignmentEndpoint {
     StandardJavaFileManager fileManager =
         compiler.getStandardFileManager(diagnosticsCollector, null, null);
     JavaFileObject javaObjectFromString = getJavaFileContentsAsString(s);
-    Iterable fileObjects = Arrays.asList(javaObjectFromString);
+    Iterable fileObjects = Collections.singletonList(javaObjectFromString);
     JavaCompiler.CompilationTask task =
         compiler.getTask(null, fileManager, diagnosticsCollector, null, null, fileObjects);
     Boolean result = task.call();

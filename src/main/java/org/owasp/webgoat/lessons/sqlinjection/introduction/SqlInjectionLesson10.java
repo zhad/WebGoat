@@ -79,7 +79,7 @@ public class SqlInjectionLesson10 implements AssignmentEndpoint {
                   "<span class='feedback-negative'>"
                       + e.getMessage()
                       + "</span><br>"
-                      + output.toString())
+                      + output)
               .build();
         } else {
           return success(this).feedback("sql-injection.10.success").build();

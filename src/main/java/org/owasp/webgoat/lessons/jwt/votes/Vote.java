@@ -25,7 +25,7 @@ public class Vote {
   private int numberOfVotes;
 
   @JsonView(Views.UserView.class)
-  private boolean votingAllowed = true;
+  private final boolean votingAllowed = true;
 
   @JsonView(Views.UserView.class)
   private long average = 0;
